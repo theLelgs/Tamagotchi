@@ -1,7 +1,7 @@
 public class Tamagotchi
 {
     public string Name;
-    private int hunger=4;
+    private int hunger=0;
     private int boredom=0;
     private List<string> words=["Hi"];
     private bool isAlive=true;
@@ -40,7 +40,7 @@ public class Tamagotchi
             Console.WriteLine($"{Name} died lol");
         }
     }
-    public bool IsAlive()
+    public bool GetAlive()
     {
         return isAlive;
     }
