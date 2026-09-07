@@ -1,12 +1,17 @@
-﻿Tamagotchi tamagotchi1 = new()
+﻿Console.WriteLine("Name your first tamagotchi!");
+Tamagotchi tamagotchi1 = new()
 {
-    Name="test1"
+    Name=Console.ReadLine()
 };
-Tamagotchi test2 = new(){Name="test2"};
+Console.WriteLine("Name your second tamagotchi!");
+Tamagotchi test2 = new()
+{
+    Name=Console.ReadLine()
+};
 
 List<Tamagotchi> tamagotchis = [tamagotchi1, test2];
 
-List<string> commandList = ["feed", "hi", "teach", "create"];
+List<string> commandList = ["feed", "hi", "teach", "create", "murder"];
 while (tamagotchis.Count>0)
 {
     
@@ -18,69 +23,88 @@ while (tamagotchis.Count>0)
     Console.WriteLine();
     
     {//What does the player want to do?
-    string input = Console.ReadLine().ToLower();
-    Console.Clear();
-    if (commandList.Contains(input.ToLower()))
-    {
-        if(input=="feed")//Feed you tamagotchi
+        string input = Console.ReadLine().ToLower();
+        Console.Clear();
+        if (commandList.Contains(input.ToLower()))
         {
-            Console.WriteLine("Who do you want to feed?");
-            foreach (Tamagotchi tamagotchi in tamagotchis)
+            if(input=="feed")//Feed your tamagotchi
             {
-                Console.WriteLine(tamagotchi.Name);
-            }
-            string text = Console.ReadLine();
-            foreach (Tamagotchi tamagotchi in tamagotchis)
-            {
-                if (text==tamagotchi.Name)
+                Console.WriteLine("Who do you want to feed?");
+                foreach (Tamagotchi tamagotchi in tamagotchis)
                 {
-                    tamagotchi.Feed();
+                    Console.WriteLine(tamagotchi.Name);
                 }
-            }
-            Console.WriteLine("You fed your tamagotchi!");
-        }
-        else if(input=="hi")//Tamagotchi says a word
-        {
-            Console.WriteLine("Who do you want to say hi to?");
-            foreach (Tamagotchi tamagotchi in tamagotchis)
-            {
-                Console.WriteLine(tamagotchi.Name);
-            }
-            string text = Console.ReadLine();
-            foreach (Tamagotchi tamagotchi in tamagotchis)
-            {
-                if (text==tamagotchi.Name)
+                string text = Console.ReadLine();
+                foreach (Tamagotchi tamagotchi in tamagotchis)
                 {
-                    tamagotchi.Hi();
+                    if (text==tamagotchi.Name)
+                    {
+                        tamagotchi.Feed();
+                    }
                 }
+                Console.WriteLine("You fed your tamagotchi!");
             }
-        }
-        else if (input=="teach")//Teach a new word to your tamagotchi
-        {
-            Console.WriteLine("Who do you want to teach a word?");
-            foreach (Tamagotchi tamagotchi in tamagotchis)
+            else if(input=="hi")//Tamagotchi says a word
             {
-                Console.WriteLine(tamagotchi.Name);
-            }
-            string text = Console.ReadLine();
-            foreach (Tamagotchi tamagotchi in tamagotchis)
-            {
-                if (text==tamagotchi.Name)
+                Console.WriteLine("Who do you want to say hi to?");
+                foreach (Tamagotchi tamagotchi in tamagotchis)
                 {
-                    Console.WriteLine("What word do you want to teach?");
-                    tamagotchi.Teach(Console.ReadLine());
+                    Console.WriteLine(tamagotchi.Name);
                 }
+                string text = Console.ReadLine();
+                foreach (Tamagotchi tamagotchi in tamagotchis)
+                {
+                    if (text==tamagotchi.Name)
+                    {
+                        tamagotchi.Hi();
+                    }
+                }
+                Console.WriteLine();
             }
-            
-            
+            else if (input=="teach")//Teach a new word to your tamagotchi
+            {
+                Console.WriteLine("Who do you want to teach a word?");
+                foreach (Tamagotchi tamagotchi in tamagotchis)
+                {
+                    Console.WriteLine(tamagotchi.Name);
+                }
+                string text = Console.ReadLine();
+                foreach (Tamagotchi tamagotchi in tamagotchis)
+                {
+                    if (text==tamagotchi.Name)
+                    {
+                        Console.WriteLine("What word do you want to teach?");
+                        tamagotchi.Teach(Console.ReadLine());
+                    }
+                }
+                
+                
+            }
+            else if (input=="create")//Make new tamagotchi
+            {
+                Console.WriteLine("What do you want to name your new tamagotchi?");
+                Tamagotchi tamagotchi = new(){Name=Console.ReadLine()};
+                tamagotchis.Add(tamagotchi);
+            }
+            else if(input=="murder")//Kill a tamagotchi
+            {
+                Console.WriteLine("Who do you want to kill?");
+                foreach (Tamagotchi tamagotchi in tamagotchis)
+                {
+                    Console.WriteLine(tamagotchi.Name);
+                }
+                string text = Console.ReadLine();
+                Tamagotchi toremove = new();
+                foreach (Tamagotchi tamagotchi in tamagotchis)
+                {
+                    if (text==tamagotchi.Name)
+                    {
+                        toremove=tamagotchi;
+                    }
+                }
+                tamagotchis.Remove(toremove);
+            }
         }
-        else if (input=="create")//Make new tamagotchi
-        {
-            Console.WriteLine("What do you want to name your new tamagotchi?");
-            Tamagotchi tamagotchi = new(){Name=Console.ReadLine()};
-            tamagotchis.Add(tamagotchi);
-        }
-    }
     }
     {//Remove dead tamagotchis
     List<Tamagotchi> toRemove = [];

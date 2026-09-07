@@ -11,7 +11,7 @@ public class Tamagotchi
     }
     public void Hi()
     {
-        Console.WriteLine(words[Random.Shared.Next(words.Count)]);
+        Console.WriteLine(Name + ": " + words[Random.Shared.Next(words.Count)]);
         ReduceBoredom();
     }
     public void Teach(string word)
