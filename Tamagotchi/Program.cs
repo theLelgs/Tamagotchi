@@ -1,13 +1,5 @@
-﻿Console.WriteLine("Name your first tamagotchi!");
-Tamagotchi tamagotchi1 = new()
-{
-    Name=Console.ReadLine()
-};
-Console.WriteLine("Name your second tamagotchi!");
-Tamagotchi test2 = new()
-{
-    Name=Console.ReadLine()
-};
+﻿Tamagotchi tamagotchi1 = new();
+Tamagotchi test2 = new();
 
 List<Tamagotchi> tamagotchis = [tamagotchi1, test2];
 
@@ -17,8 +9,8 @@ while (tamagotchis.Count>0)
     
     foreach(Tamagotchi tamagotchi in tamagotchis)
     {
-        tamagotchi.PrintStats();
         Console.WriteLine();
+        tamagotchi.PrintStats();
     }
     Console.WriteLine();
     
@@ -29,7 +21,7 @@ while (tamagotchis.Count>0)
         {
             if(input=="feed")//Feed your tamagotchi
             {
-                if (tamagotchis.Count>1)
+                if (tamagotchis.Count>1&&tamagotchis.Count!=0)
                 {
                     
                     Console.WriteLine("Who do you want to feed?");
@@ -54,7 +46,7 @@ while (tamagotchis.Count>0)
             }
             else if(input=="hi")//Tamagotchi says a word
             {
-                if (tamagotchis.Count>1)
+                if (tamagotchis.Count>1&&tamagotchis.Count!=0)
                 {
                 Console.WriteLine("Who do you want to say hi to?");
                 foreach (Tamagotchi tamagotchi in tamagotchis)
@@ -78,7 +70,7 @@ while (tamagotchis.Count>0)
             }
             else if (input=="teach")//Teach a new word to your tamagotchi
             {
-                if (tamagotchis.Count>1)
+                if (tamagotchis.Count>1&&tamagotchis.Count!=0)
                 {
                     Console.WriteLine("Who do you want to teach a word?");
                 foreach (Tamagotchi tamagotchi in tamagotchis)
@@ -112,7 +104,7 @@ while (tamagotchis.Count>0)
             else if(input=="murder")//Kill a tamagotchi
             {
                 Tamagotchi toremove = new();
-                if (tamagotchis.Count>1)
+                if (tamagotchis.Count>1&&tamagotchis.Count!=0)
                 {
                 Console.WriteLine("Who do you want to kill?");
                 foreach (Tamagotchi tamagotchi in tamagotchis)

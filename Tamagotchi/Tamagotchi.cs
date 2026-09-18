@@ -1,5 +1,11 @@
 public class Tamagotchi
 {
+    public Tamagotchi()
+    {
+        Console.WriteLine("Name your tamagotchi!");
+        Name=Console.ReadLine();
+        Console.WriteLine("You named your tamagotchi " + Name);
+    }
     public string Name;
     private int hunger=0;
     private int boredom=0;
